@@ -90,7 +90,7 @@
               <div class="suite-section-content">
                 <ul>
                   <li>
-                    <span class="method-stats">1 method,   1 passed</span>
+                    <span class="method-stats">2 methods,   2 passed</span>
                   </li>
                   <li>
                     <span class="method-list-title passed">Passed methods</span>
@@ -99,6 +99,11 @@
                       <a href="#" panel-name="suite-SuitePWCM" class="show-methods passed suite-SuitePWCM"> (show)</a> <!-- show-methods passed suite-SuitePWCM -->
                     </span>
                     <div class="method-list-content passed suite-SuitePWCM">
+                      <span>
+                        <img width="3%" src="passed.png"/>
+                        <a href="#" class="method navigator-link" panel-name="suite-SuitePWCM" title="com.Centurylink.PWCM.Sprint208" hash-for-method="Quicklinks">Quicklinks</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
                       <span>
                         <img width="3%" src="passed.png"/>
                         <a href="#" class="method navigator-link" panel-name="suite-SuitePWCM" title="com.Centurylink.PWCM.Sprint208" hash-for-method="UtilityLinks">UtilityLinks</a> <!-- method navigator-link -->
@@ -122,6 +127,13 @@
               <span class="class-name">com.Centurylink.PWCM.Sprint208</span>
             </div> <!-- main-panel-header rounded-window-top -->
             <div class="main-panel-content rounded-window-bottom">
+              <div class="method">
+                <div class="method-content">
+                  <a name="Quicklinks">
+                  </a> <!-- Quicklinks -->
+                  <span class="method-name">Quicklinks</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
               <div class="method">
                 <div class="method-content">
                   <a name="UtilityLinks">
@@ -183,16 +195,20 @@ data.addColumn('number', 'Number');
 data.addColumn('string', 'Method');
 data.addColumn('string', 'Class');
 data.addColumn('number', 'Time (ms)');
-data.addRows(1);
+data.addRows(2);
 data.setCell(0, 0, 0)
 data.setCell(0, 1, 'UtilityLinks')
 data.setCell(0, 2, 'com.Centurylink.PWCM.Sprint208')
-data.setCell(0, 3, 381803);
+data.setCell(0, 3, 79671);
+data.setCell(1, 0, 1)
+data.setCell(1, 1, 'Quicklinks')
+data.setCell(1, 2, 'com.Centurylink.PWCM.Sprint208')
+data.setCell(1, 3, 77637);
 window.suiteTableData['SuitePWCM']= { tableData: data, tableDiv: 'times-div-SuitePWCM'}
 return data;
 }
               </script>
-              <span class="suite-total-time">Total running time: 6 minutes</span>
+              <span class="suite-total-time">Total running time: 2 minutes</span>
               <div id="times-div-SuitePWCM">
               </div> <!-- times-div-SuitePWCM -->
             </div> <!-- times-div -->
@@ -225,11 +241,19 @@ return data;
               </div> <!-- test-method -->
               <div class="configuration-method after">
                 <span class="method-name">tearDown([TestResult name=UtilityLinks status=SUCCESS method=Sprint208.UtilityLinks()[pri:0, instance:com.Cen...)</span>
-                <span class="method-start">381803 ms</span>
+                <span class="method-start">79671 ms</span>
+              </div> <!-- configuration-method after -->
+              <div class="test-method">
+                <span class="method-name">Quicklinks</span>
+                <span class="method-start">79703 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-method after">
+                <span class="method-name">tearDown([TestResult name=Quicklinks status=SUCCESS method=Sprint208.Quicklinks()[pri:0, instance:com.Century...)</span>
+                <span class="method-start">157340 ms</span>
               </div> <!-- configuration-method after -->
               <div class="configuration-class after">
                 <span class="method-name">closebrowser</span>
-                <span class="method-start">381849 ms</span>
+                <span class="method-start">157371 ms</span>
               </div> <!-- configuration-class after -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->

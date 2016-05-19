@@ -24,10 +24,14 @@ public class Sprint208 {
 	String injectpath=".\\src\\main\\resources\\Injectfile.xls";
 	String Attachpath="C:\\Users\\348027\\git\\Centurylink";
 	
+	String Homeimg="//img[@src='https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcTy6yBiky4iWbqq2qnPPYT7X8CQA_o_GGWbiZvtW5IapfIcbd_C']";
+	String resourceimg="//img[@src='https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSnXtWT2sNGRvc4T7I_SgH88-xewD8j0L9q6lrwUvMA2HSFJkAmLw']";
+	String productandsoluimg="//img[@src='http://www.localinternetservice.com/images/localinternet/centurylink-brand/devices.jpg']";
+	
 	    @Test(priority=0)		
 	    public void UtilityLinks(){
 		extent=new ExtentReports(reportpath,true);
-		test=extent.startTest("Global Header - Utility Links");
+		test=extent.startTest("Global Header-Utility Links");
 		test.assignCategory("Sprint108","Regression Test");
 		driver=new FirefoxDriver();
 		driver.manage().window().maximize();
@@ -45,17 +49,17 @@ public class Sprint208 {
 		test.log(LogStatus.PASS, "Login Success");
 		
 		/* User can see the utility links*/
-		driver.findElement(By.xpath("//div[@class='dropdown-toggle']")).isDisplayed();
+		driver.findElement(By.className("dropdown-toggle")).isDisplayed();
 		driver.findElement(By.linkText("SalesForce")).isDisplayed();
 		driver.findElement(By.linkText("Help")).isDisplayed();
 		driver.findElement(By.linkText("Feedback")).isDisplayed();
 		driver.findElement(By.linkText("Logout")).isDisplayed();
 		test.log(LogStatus.PASS, "Utility links are visible");
 		
-		/*User navigate to help and feedback page*/
+		/*User can select a Country*/
 		String parentw=driver.getWindowHandle();
-		driver.findElement(By.xpath("//div[@class='dropdown-toggle']")).isSelected();
-		driver.findElement(By.xpath("//div[@class='dropdown-toggle']")).click();
+		driver.findElement(By.className("dropdown-toggle")).isDisplayed();
+		driver.findElement(By.className("dropdown-toggle")).click();
 		driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
 		test.log(LogStatus.PASS, "Country is selectable");
 		
@@ -96,25 +100,64 @@ public class Sprint208 {
 		driver.findElement(By.linkText("Logout")).isDisplayed();
 		test.log(LogStatus.PASS, "Logout link is present in Utility link section");
 		
-		/*User can click on the CTL logo and navigate back to the home page*/
-		String ctllogo="//img[@src='https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcTy6yBiky4iWbqq2qnPPYT7X8CQA_o_GGWbiZvtW5IapfIcbd_C']";
-		String resourceimg="//img[@src='https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSnXtWT2sNGRvc4T7I_SgH88-xewD8j0L9q6lrwUvMA2HSFJkAmLw']";
+		/*User can click on the CTL LOGO and navigate back to the home page*/
 		driver.findElement(By.linkText("Resources")).click();
 		driver.manage().timeouts().implicitlyWait(7, TimeUnit.SECONDS);
 		driver.findElement(By.xpath(resourceimg)).isDisplayed();
-		driver.findElement(By.xpath("//a[@class='ctlbiz-logo']")).click();
-		driver.findElement(By.xpath(ctllogo)).isDisplayed();
+		driver.findElement(By.className("ctlbiz-logo")).click();
+		driver.findElement(By.xpath(Homeimg)).isDisplayed();
 		test.log(LogStatus.PASS, "CTL logo is clickable and user is navigated to the Home page");
 		
 		/*User can view a Search utility */
-		driver.findElement(By.xpath("//input[@class='search_textBox']")).isSelected();
-		driver.findElement(By.xpath("//input[@class='search_textBox']")).sendKeys("Search text working");
+		driver.findElement(By.className("search_textBox")).isDisplayed();
+		driver.findElement(By.className("search_textBox")).sendKeys("Search text working");
+		driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
 		test.log(LogStatus.PASS, "Search utility is present");
+		
+		/*User can view the View As drop down*/
+		driver.findElement(By.xpath("//div[@class='dropdown-toggle active']")).isDisplayed();
+		driver.findElement(By.xpath("//div[@class='dropdown-toggle active']/i[@class='fa fa-chevron-down']")).click();
+		driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
+		test.log(LogStatus.PASS, "View As dropdown is present");
+		
+		/*User can view the link to SalesForce*/
+		driver.findElement(By.linkText("SalesForce")).isDisplayed();
+		test.log(LogStatus.PASS, "Sales Force link is present");
 		
 		test.log(LogStatus.PASS, "UtilityLinks Test Case is Passed");
 		extent.endTest(test);
 		extent.flush();
 	}
+	    
+	    @Test(priority=1)		
+	    public void Quicklinks(){
+	    System.out.println("log1");
+	    driver.get("http://172.26.130.130:4502/content/pwcm-first-page/home.html");
+		driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+		test=extent.startTest("Global Footer-Quick Links");
+		test.assignCategory("Sprint108","Regression Test");
+		System.out.println("log2");
+		test.log(LogStatus.PASS, "pwcmint page is ready");
+		System.out.println("log3");
+		/*User can see a section containing quick links to frequently used pages within Products and Resources sections */
+		driver.findElement(By.linkText("Home")).isDisplayed();
+		driver.findElement(By.linkText("Products and Solutions")).isDisplayed();
+		driver.findElement(By.linkText("Resources")).isDisplayed();
+		test.log(LogStatus.PASS, "Quick link Home,Product&solutions and Resources is present");
+		
+		/*Navigate to pages within the site*/
+		driver.findElement(By.linkText("Products and Solutions")).click();
+		driver.findElement(By.xpath(productandsoluimg)).isDisplayed();
+		driver.findElement(By.linkText("Resources")).click();
+		driver.findElement(By.xpath(resourceimg)).isDisplayed();
+		driver.findElement(By.linkText("Home")).click();
+		driver.findElement(By.xpath(Homeimg)).isDisplayed();
+		test.log(LogStatus.PASS, "Links are functional, navigation works properly");
+		
+		test.log(LogStatus.PASS, "QuickLinks Test Case is Passed");
+		extent.endTest(test);
+		extent.flush();
+	    }
 	
 	@AfterMethod
 	public void tearDown(ITestResult result) throws InterruptedException{

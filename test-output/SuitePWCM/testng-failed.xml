@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Failed suite [SuitePWCM]">
-  <parameter name="browser" value="chrome"/>
   <test name="Test(failed)">
-    <parameter name="browser" value="chrome"/>
     <classes>
       <class name="com.Centurylink.PWCM.Sprint208">
         <methods>
-          <include name="drivercall"/>
-          <include name="UtilityLinks"/>
+          <include name="tearDown"/>
+          <include name="Quicklinks"/>
+          <include name="closebrowser"/>
         </methods>
       </class> <!-- com.Centurylink.PWCM.Sprint208 -->
     </classes>
