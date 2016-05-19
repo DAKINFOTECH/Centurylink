@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" total="1" passed="1">
+  <reporter-output>
+  </reporter-output>
+  <suite name="SuitePWCM" duration-ms="400724" started-at="2016-05-19T11:33:36Z" finished-at="2016-05-19T11:40:17Z">
+    <groups>
+    </groups>
+    <test name="Test" duration-ms="400724" started-at="2016-05-19T11:33:36Z" finished-at="2016-05-19T11:40:17Z">
+      <class name="com.Centurylink.PWCM.Sprint208">
+        <test-method status="PASS" signature="UtilityLinks()[pri:0, instance:com.Centurylink.PWCM.Sprint208@cbdf6e]" name="UtilityLinks" duration-ms="381803" started-at="2016-05-19T17:03:36Z" finished-at="2016-05-19T17:09:58Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- UtilityLinks -->
+        <test-method status="PASS" signature="tearDown(org.testng.ITestResult)[pri:0, instance:com.Centurylink.PWCM.Sprint208@cbdf6e]" name="tearDown" is-config="true" duration-ms="46" started-at="2016-05-19T17:09:58Z" finished-at="2016-05-19T17:09:58Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=UtilityLinks status=SUCCESS method=Sprint208.UtilityLinks()[pri:0, instance:com.Centurylink.PWCM.Sprint208@cbdf6e] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method status="PASS" signature="closebrowser()[pri:0, instance:com.Centurylink.PWCM.Sprint208@cbdf6e]" name="closebrowser" is-config="true" duration-ms="18858" started-at="2016-05-19T17:09:58Z" finished-at="2016-05-19T17:10:17Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- closebrowser -->
+      </class> <!-- com.Centurylink.PWCM.Sprint208 -->
+    </test> <!-- Test -->
+  </suite> <!-- SuitePWCM -->
+</testng-results>
