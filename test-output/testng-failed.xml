@@ -5,8 +5,8 @@
     <classes>
       <class name="com.Centurylink.PWCM.Sprint208">
         <methods>
+          <include name="test2"/>
           <include name="tearDown"/>
-          <include name="Quicklinks"/>
           <include name="closebrowser"/>
         </methods>
       </class> <!-- com.Centurylink.PWCM.Sprint208 -->
