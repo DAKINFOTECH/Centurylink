@@ -5,11 +5,18 @@
     <classes>
       <class name="com.Centurylink.PWCM.Sprint208">
         <methods>
-          <include name="test2"/>
           <include name="tearDown"/>
           <include name="closebrowser"/>
         </methods>
       </class> <!-- com.Centurylink.PWCM.Sprint208 -->
+      <class name="com.Centurylink.PWCM.Sprint209">
+        <methods>
+          <include name="tearDown"/>
+          <include name="closebrowser"/>
+          <include name="Helppage" invocation-numbers="0"/>
+          <include name="Feedbackpage" invocation-numbers="0"/>
+        </methods>
+      </class> <!-- com.Centurylink.PWCM.Sprint209 -->
     </classes>
   </test> <!-- Test(failed) -->
 </suite> <!-- Failed suite [SuitePWCM] -->

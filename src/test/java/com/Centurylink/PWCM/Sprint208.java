@@ -29,6 +29,7 @@ public class Sprint208 {
 	String Attachpath="C:\\Users\\348027\\git\\Centurylink";
 	String username="admin";
 	String password="admin";
+	String baseurl="http://172.26.130.130:4502/content/pwcm-first-page/home.html";
 	
 	String Homeimg="//img[@src='https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcTy6yBiky4iWbqq2qnPPYT7X8CQA_o_GGWbiZvtW5IapfIcbd_C']";
 	String resourceimg="//img[@src='https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSnXtWT2sNGRvc4T7I_SgH88-xewD8j0L9q6lrwUvMA2HSFJkAmLw']";
@@ -39,13 +40,13 @@ public class Sprint208 {
 	    public void UtilityLinks(){
 		extent=new ExtentReports(reportpath,true);
 		test=extent.startTest("Global Header-Utility Links");
-		test.assignCategory("Sprint108");
+		test.assignCategory("Sprint208");
 		driver=new FirefoxDriver();
 		driver.manage().window().maximize();
 		driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
-		driver.get("http://172.26.130.130:4502/content/pwcm-first-page/home.html");
+		driver.get(baseurl);
 		driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
-		test.log(LogStatus.PASS, "pwcmint page is ready");
+		test.log(LogStatus.PASS, "pwcmint Homepage");
 		driver.findElement(By.id("submit-button")).isDisplayed();
 		
 		/*PWCM login*/
@@ -81,7 +82,6 @@ public class Sprint208 {
 				driver.switchTo().window(childw);
 				driver.manage().window().maximize();
 				driver.manage().timeouts().implicitlyWait(7, TimeUnit.SECONDS);
-				System.out.println(driver.getTitle());
 				driver.close();
 			}
 		}
@@ -138,11 +138,11 @@ public class Sprint208 {
 	    
 	    @Test(priority=1)		
 	    public void QuickLinks(){
-	    driver.get("http://172.26.130.130:4502/content/pwcm-first-page/home.html");
+	    driver.get(baseurl);
 		driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
 		test=extent.startTest("Global Footer-Quick Links");
-		test.assignCategory("Sprint108");
-		test.log(LogStatus.PASS, "pwcmint page is ready");
+		test.assignCategory("Sprint208");
+		test.log(LogStatus.PASS, "pwcmint Homepage");
 		/*User can see a section containing quick links to frequently used pages within Products and Resources sections */
 		driver.findElement(By.linkText("Home")).isDisplayed();
 		driver.findElement(By.linkText("Products and Solutions")).isDisplayed();
@@ -177,11 +177,11 @@ public class Sprint208 {
 	    
 		@Test(priority=2)		
 		public void HomePage(){
-			driver.get("http://172.26.130.130:4502/content/pwcm-first-page/home.html");
+			driver.get(baseurl);
 			driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
 			test=extent.startTest("Global Header-Home Page");
-			test.assignCategory("Sprint108");
-			test.log(LogStatus.PASS, "pwcmint page is ready");
+			test.assignCategory("Sprint208");
+			test.log(LogStatus.PASS, "pwcmint Homepage");
 			
 			/*User is able to land on a home page*/
 			driver.findElement(By.linkText("Home")).click();
@@ -216,11 +216,11 @@ public class Sprint208 {
 		
 		@Test(priority=3)		
 		public void NavigationBar(){
-			driver.get("http://172.26.130.130:4502/content/pwcm-first-page/home.html");
+			driver.get(baseurl);
 			driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
 			test=extent.startTest("Global Header - Navigation Bar");
-			test.assignCategory("Sprint108");
-			test.log(LogStatus.PASS, "pwcmint page is ready");
+			test.assignCategory("Sprint208");
+			test.log(LogStatus.PASS, "pwcmint Homepage");
 			
 			/* User can see Navigation tabs-Home, Products and Solutions, Resources*/
 			driver.findElement(By.linkText("Home")).isDisplayed();
@@ -260,7 +260,7 @@ public class Sprint208 {
     public void closebrowser()
     {
     	
-     driver.get("C:\\Users\\348027\\git\\Centurylink\\Reporting\\Advreportpath.html");
+     driver.close();
     }
 
 }
