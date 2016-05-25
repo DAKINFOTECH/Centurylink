@@ -101,7 +101,7 @@
                     <div class="method-list-content passed suite-SuitePWCM">
                       <span>
                         <img width="3%" src="passed.png"/>
-                        <a href="#" class="method navigator-link" panel-name="suite-SuitePWCM" title="com.Centurylink.PWCM.Sprint209" hash-for-method="Feedbackpage(Ilamukil, 859647, TCS, ilamukil.arunkumar@gmail.com, 9658743256, 9856471254, navigationError, Naviga...)">Feedbackpage(Ilamukil, 859647, TCS, ilamukil.arunkumar@gmail.com, 9658743256, 9856471254, navigationError, Naviga...)</a> <!-- method navigator-link -->
+                        <a href="#" class="method navigator-link" panel-name="suite-SuitePWCM" title="com.Centurylink.PWCM.Sprint209" hash-for-method="Feedbackpage(Ilamukil, 859647, TCS, ilamukil.arunkumar@gmail.com, 9658743256, 9856471254, NavigationError, Naviga...)">Feedbackpage(Ilamukil, 859647, TCS, ilamukil.arunkumar@gmail.com, 9658743256, 9856471254, NavigationError, Naviga...)</a> <!-- method navigator-link -->
                       </span>
                       <br/>
                       <span>
@@ -149,10 +149,10 @@
             <div class="main-panel-content rounded-window-bottom">
               <div class="method">
                 <div class="method-content">
-                  <a name="Feedbackpage(Ilamukil, 859647, TCS, ilamukil.arunkumar@gmail.com, 9658743256, 9856471254, navigationError, Naviga...)">
-                  </a> <!-- Feedbackpage(Ilamukil, 859647, TCS, ilamukil.arunkumar@gmail.com, 9658743256, 9856471254, navigationError, Naviga...) -->
+                  <a name="Feedbackpage(Ilamukil, 859647, TCS, ilamukil.arunkumar@gmail.com, 9658743256, 9856471254, NavigationError, Naviga...)">
+                  </a> <!-- Feedbackpage(Ilamukil, 859647, TCS, ilamukil.arunkumar@gmail.com, 9658743256, 9856471254, NavigationError, Naviga...) -->
                   <span class="method-name">Feedbackpage</span>
-                  <span class="parameters">(Ilamukil, 859647, TCS, ilamukil.arunkumar@gmail.com, 9658743256, 9856471254, navigationError, Navigation is not working, Not working please solve ASAP)</span>
+                  <span class="parameters">(Ilamukil, 859647, TCS, ilamukil.arunkumar@gmail.com, 9658743256, 9856471254, NavigationError, Navigation is not working, Not working please solve ASAP)</span>
                 </div> <!-- method-content -->
               </div> <!-- method -->
               <div class="method">
@@ -211,12 +211,13 @@
 &lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
 &lt;!DOCTYPE suite SYSTEM &quot;http://testng.org/testng-1.0.dtd&quot;&gt;
 &lt;suite name=&quot;SuitePWCM&quot;&gt;
-  &lt;test name=&quot;Test&quot;&gt;
+  &lt;test name=&quot;ChromeTest&quot;&gt;
+    &lt;parameter name=&quot;browser&quot; value=&quot;chrome&quot;/&gt;
     &lt;classes&gt;
       &lt;class name=&quot;com.Centurylink.PWCM.Sprint208&quot;/&gt;
       &lt;class name=&quot;com.Centurylink.PWCM.Sprint209&quot;/&gt;
     &lt;/classes&gt;
-  &lt;/test&gt; &lt;!-- Test --&gt;
+  &lt;/test&gt; &lt;!-- ChromeTest --&gt;
 &lt;/suite&gt; &lt;!-- SuitePWCM --&gt;
             </pre>
           </div> <!-- main-panel-content rounded-window-bottom -->
@@ -228,7 +229,7 @@
           <div class="main-panel-content rounded-window-bottom">
             <ul>
               <li>
-                <span class="test-name">Test (2 classes)</span>
+                <span class="test-name">ChromeTest (2 classes)</span>
               </li>
             </ul>
           </div> <!-- main-panel-content rounded-window-bottom -->
@@ -256,34 +257,34 @@ data.addColumn('string', 'Class');
 data.addColumn('number', 'Time (ms)');
 data.addRows(6);
 data.setCell(0, 0, 0)
-data.setCell(0, 1, 'QuickLinks')
+data.setCell(0, 1, 'UtilityLinks')
 data.setCell(0, 2, 'com.Centurylink.PWCM.Sprint208')
-data.setCell(0, 3, 119958);
+data.setCell(0, 3, 159285);
 data.setCell(1, 0, 1)
-data.setCell(1, 1, 'UtilityLinks')
-data.setCell(1, 2, 'com.Centurylink.PWCM.Sprint208')
-data.setCell(1, 3, 116695);
+data.setCell(1, 1, 'Helppage')
+data.setCell(1, 2, 'com.Centurylink.PWCM.Sprint209')
+data.setCell(1, 3, 103449);
 data.setCell(2, 0, 2)
-data.setCell(2, 1, 'NavigationBar')
+data.setCell(2, 1, 'QuickLinks')
 data.setCell(2, 2, 'com.Centurylink.PWCM.Sprint208')
-data.setCell(2, 3, 73095);
+data.setCell(2, 3, 97287);
 data.setCell(3, 0, 3)
-data.setCell(3, 1, 'Helppage')
-data.setCell(3, 2, 'com.Centurylink.PWCM.Sprint209')
-data.setCell(3, 3, 54478);
+data.setCell(3, 1, 'NavigationBar')
+data.setCell(3, 2, 'com.Centurylink.PWCM.Sprint208')
+data.setCell(3, 3, 53913);
 data.setCell(4, 0, 4)
-data.setCell(4, 1, 'HomePage')
-data.setCell(4, 2, 'com.Centurylink.PWCM.Sprint208')
-data.setCell(4, 3, 34925);
+data.setCell(4, 1, 'Feedbackpage')
+data.setCell(4, 2, 'com.Centurylink.PWCM.Sprint209')
+data.setCell(4, 3, 45640);
 data.setCell(5, 0, 5)
-data.setCell(5, 1, 'Feedbackpage')
-data.setCell(5, 2, 'com.Centurylink.PWCM.Sprint209')
-data.setCell(5, 3, 18639);
+data.setCell(5, 1, 'HomePage')
+data.setCell(5, 2, 'com.Centurylink.PWCM.Sprint208')
+data.setCell(5, 3, 22576);
 window.suiteTableData['SuitePWCM']= { tableData: data, tableDiv: 'times-div-SuitePWCM'}
 return data;
 }
               </script>
-              <span class="suite-total-time">Total running time: 6 minutes</span>
+              <span class="suite-total-time">Total running time: 8 minutes</span>
               <div id="times-div-SuitePWCM">
               </div> <!-- times-div-SuitePWCM -->
             </div> <!-- times-div -->
@@ -310,64 +311,72 @@ return data;
           <div class="main-panel-content rounded-window-bottom">
             <div class="chronological-class">
               <div class="chronological-class-name">com.Centurylink.PWCM.Sprint208</div> <!-- chronological-class-name -->
+              <div class="configuration-class before">
+                <span class="method-name">drivercall(chrome)</span>
+                <span class="method-start">0 ms</span>
+              </div> <!-- configuration-class before -->
               <div class="test-method">
                 <span class="method-name">UtilityLinks</span>
-                <span class="method-start">0 ms</span>
+                <span class="method-start">20823 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-method after">
                 <span class="method-name">tearDown([TestResult name=UtilityLinks status=SUCCESS method=Sprint208.UtilityLinks()[pri:0, instance:com.Cen...)</span>
-                <span class="method-start">116695 ms</span>
+                <span class="method-start">180110 ms</span>
               </div> <!-- configuration-method after -->
               <div class="test-method">
                 <span class="method-name">QuickLinks</span>
-                <span class="method-start">116726 ms</span>
+                <span class="method-start">180266 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-method after">
                 <span class="method-name">tearDown([TestResult name=QuickLinks status=SUCCESS method=Sprint208.QuickLinks()[pri:0, instance:com.Century...)</span>
-                <span class="method-start">236684 ms</span>
+                <span class="method-start">277567 ms</span>
               </div> <!-- configuration-method after -->
               <div class="test-method">
                 <span class="method-name">HomePage</span>
-                <span class="method-start">236716 ms</span>
+                <span class="method-start">277605 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-method after">
                 <span class="method-name">tearDown([TestResult name=HomePage status=SUCCESS method=Sprint208.HomePage()[pri:0, instance:com.Centurylink...)</span>
-                <span class="method-start">271641 ms</span>
+                <span class="method-start">300183 ms</span>
               </div> <!-- configuration-method after -->
               <div class="test-method">
                 <span class="method-name">NavigationBar</span>
-                <span class="method-start">271672 ms</span>
+                <span class="method-start">300219 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-method after">
                 <span class="method-name">tearDown([TestResult name=NavigationBar status=SUCCESS method=Sprint208.NavigationBar()[pri:0, instance:com.C...)</span>
-                <span class="method-start">344767 ms</span>
+                <span class="method-start">354134 ms</span>
               </div> <!-- configuration-method after -->
               <div class="configuration-class after">
                 <span class="method-name">closebrowser</span>
-                <span class="method-start">344798 ms</span>
+                <span class="method-start">354170 ms</span>
               </div> <!-- configuration-class after -->
             </div> <!-- chronological-class -->
             <div class="chronological-class">
               <div class="chronological-class-name">com.Centurylink.PWCM.Sprint209</div> <!-- chronological-class-name -->
+              <div class="configuration-class before">
+                <span class="method-name">drivercall(chrome)</span>
+                <span class="method-start">356001 ms</span>
+              </div> <!-- configuration-class before -->
               <div class="test-method">
                 <span class="method-name">Helppage(Arunkumar, 33669987, TCS, Centurylink, 9885698743, 9665874215, dakinfotech87@gmail.com, Google Chrom...)</span>
-                <span class="method-start">344954 ms</span>
+                <span class="method-start">362347 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-method after">
                 <span class="method-name">tearDown([TestResult name=Helppage status=SUCCESS method=Sprint209.Helppage(java.lang.String, java.lang.Strin...)</span>
-                <span class="method-start">399432 ms</span>
+                <span class="method-start">465798 ms</span>
               </div> <!-- configuration-method after -->
               <div class="test-method">
-                <span class="method-name">Feedbackpage(Ilamukil, 859647, TCS, ilamukil.arunkumar@gmail.com, 9658743256, 9856471254, navigationError, Naviga...)</span>
-                <span class="method-start">399464 ms</span>
+                <span class="method-name">Feedbackpage(Ilamukil, 859647, TCS, ilamukil.arunkumar@gmail.com, 9658743256, 9856471254, NavigationError, Naviga...)</span>
+                <span class="method-start">465886 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-method after">
                 <span class="method-name">tearDown([TestResult name=Feedbackpage status=SUCCESS method=Sprint209.Feedbackpage(java.lang.String, java.la...)</span>
-                <span class="method-start">418103 ms</span>
+                <span class="method-start">511528 ms</span>
               </div> <!-- configuration-method after -->
               <div class="configuration-class after">
                 <span class="method-name">closebrowser</span>
-                <span class="method-start">418150 ms</span>
+                <span class="method-start">511574 ms</span>
               </div> <!-- configuration-class after -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->

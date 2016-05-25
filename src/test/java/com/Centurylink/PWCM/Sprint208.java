@@ -8,10 +8,11 @@ import junit.framework.Assert;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 import com.Centurylink.PWCM.pwcmlibrary;
@@ -24,35 +25,35 @@ public class Sprint208 {
 	ExtentTest test;
 	WebDriver driver;
 	pwcmlibrary config=new pwcmlibrary();
-	String reportpath=".\\Reporting\\Advreportpath.html";
-	String injectpath=".\\src\\main\\resources\\Injectfile.xls";
-	String Attachpath="C:\\Users\\348027\\git\\Centurylink";
-	String username="admin";
-	String password="admin";
-	String baseurl="http://172.26.130.130:4502/content/pwcm-first-page/home.html";
-	
+		
 	String Homeimg="//img[@src='https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcTy6yBiky4iWbqq2qnPPYT7X8CQA_o_GGWbiZvtW5IapfIcbd_C']";
 	String resourceimg="//img[@src='https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSnXtWT2sNGRvc4T7I_SgH88-xewD8j0L9q6lrwUvMA2HSFJkAmLw']";
 	String productandsoluimg="//img[@src='http://www.localinternetservice.com/images/localinternet/centurylink-brand/devices.jpg']";
 	String copyright="    © 2016 CenturyLink. All Rights Reserved.";
+	  
+	
+	  @BeforeClass
+	   @Parameters("browser")
+	   public void drivercall(String browserName) throws InterruptedException
+	   {
+		driver=BrowserClass.browserSelection(browserName);
+	   }
+	
 	
 	    @Test(priority=0)		
 	    public void UtilityLinks(){
-		extent=new ExtentReports(reportpath,true);
-		test=extent.startTest("Global Header-Utility Links");
+		extent=new ExtentReports(config.reportpath,true);
+		test=extent.startTest("Global Header-Utility Links-US49296");
 		test.assignCategory("Sprint208");
-		driver=new FirefoxDriver();
 		driver.manage().window().maximize();
 		driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
-		driver.get(baseurl);
+		driver.get(config.baseurl);
 		driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
 		test.log(LogStatus.PASS, "pwcmint Homepage");
 		driver.findElement(By.id("submit-button")).isDisplayed();
 		
 		/*PWCM login*/
-		driver.findElement(By.id("username")).sendKeys(username);
-		driver.findElement(By.id("password")).sendKeys(password);
-		driver.findElement(By.id("submit-button")).click();
+		config.login(driver);
 		driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
 		test.log(LogStatus.PASS, "Login Success");
 		
@@ -138,9 +139,9 @@ public class Sprint208 {
 	    
 	    @Test(priority=1)		
 	    public void QuickLinks(){
-	    driver.get(baseurl);
+	    driver.get(config.baseurl);
 		driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
-		test=extent.startTest("Global Footer-Quick Links");
+		test=extent.startTest("Global Footer-Quick Links-US49297");
 		test.assignCategory("Sprint208");
 		test.log(LogStatus.PASS, "pwcmint Homepage");
 		/*User can see a section containing quick links to frequently used pages within Products and Resources sections */
@@ -177,9 +178,9 @@ public class Sprint208 {
 	    
 		@Test(priority=2)		
 		public void HomePage(){
-			driver.get(baseurl);
+			driver.get(config.baseurl);
 			driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
-			test=extent.startTest("Global Header-Home Page");
+			test=extent.startTest("Global Header-Home Page-US49292");
 			test.assignCategory("Sprint208");
 			test.log(LogStatus.PASS, "pwcmint Homepage");
 			
@@ -216,9 +217,9 @@ public class Sprint208 {
 		
 		@Test(priority=3)		
 		public void NavigationBar(){
-			driver.get(baseurl);
+			driver.get(config.baseurl);
 			driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
-			test=extent.startTest("Global Header - Navigation Bar");
+			test=extent.startTest("Global Header-Navigation Bar-US49294");
 			test.assignCategory("Sprint208");
 			test.log(LogStatus.PASS, "pwcmint Homepage");
 			
@@ -248,7 +249,7 @@ public class Sprint208 {
 	if(ITestResult.FAILURE==result.getStatus())
 	{
 	config.captureScreenshot(driver,result.getName());
-	String image=test.addScreenCapture(Attachpath+"\\Screenshots\\"+result.getName()+".jpg");
+	String image=test.addScreenCapture(config.Attachpath+"\\Screenshots\\"+result.getName()+".jpg");
 	test.log(LogStatus.FAIL, result.getName(), image);
 	Thread.sleep(5000);
 	}

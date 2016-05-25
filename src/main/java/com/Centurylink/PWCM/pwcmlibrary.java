@@ -18,6 +18,23 @@ public class pwcmlibrary {
 	HSSFWorkbook worbk;
 	HSSFSheet sheet1;
 	
+	public String reportpath=".\\Reporting\\Advreportpath.html";
+	public String injectpath=".\\src\\main\\resources\\Injectfile.xls";
+	public String Attachpath="C:\\Users\\348027\\git\\Centurylink";
+	public String username="admin";
+	public String password="admin";
+	public String baseurl="http://172.26.130.130:4502/content/pwcm-first-page/home.html";
+	public String toolsurl="http://172.26.130.130:4502/content/pwcm-first-page/test-page.html";
+	
+	//Login function
+	public void login(WebDriver driver)
+	{
+		driver.findElement(By.id("username")).sendKeys(username);
+		driver.findElement(By.id("password")).sendKeys(password);
+		driver.findElement(By.id("submit-button")).click();
+		return;
+	}
+	
 	//locate the Excel file
 		public void Excelpath(String path, int sheetnum)
 		{
