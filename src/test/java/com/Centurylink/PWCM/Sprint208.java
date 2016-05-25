@@ -30,13 +30,12 @@ public class Sprint208 {
 	String resourceimg="//img[@src='https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSnXtWT2sNGRvc4T7I_SgH88-xewD8j0L9q6lrwUvMA2HSFJkAmLw']";
 	String productandsoluimg="//img[@src='http://www.localinternetservice.com/images/localinternet/centurylink-brand/devices.jpg']";
 	String copyright="    © 2016 CenturyLink. All Rights Reserved.";
-	  
-	
+		
 	  @BeforeClass
 	   @Parameters("browser")
 	   public void drivercall(String browserName) throws InterruptedException
 	   {
-		driver=BrowserClass.browserSelection(browserName);
+		driver=BrowserClass.browserSelection(browserName);		
 	   }
 	
 	
