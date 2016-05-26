@@ -20,7 +20,7 @@ import com.relevantcodes.extentreports.ExtentReports;
 import com.relevantcodes.extentreports.ExtentTest;
 import com.relevantcodes.extentreports.LogStatus;
 
-public class Sprint208 {
+public class HomePage {
 	ExtentReports extent;
 	ExtentTest test;
 	WebDriver driver;
@@ -43,7 +43,7 @@ public class Sprint208 {
 	    public void UtilityLinks(){
 		extent=new ExtentReports(config.reportpath,true);
 		test=extent.startTest("Global Header-Utility Links-US49296");
-		test.assignCategory("Sprint208");
+		test.assignCategory("HomePage");
 		driver.manage().window().maximize();
 		driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
 		driver.get(config.baseurl);
@@ -141,7 +141,7 @@ public class Sprint208 {
 	    driver.get(config.baseurl);
 		driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
 		test=extent.startTest("Global Footer-Quick Links-US49297");
-		test.assignCategory("Sprint208");
+		test.assignCategory("HomePage");
 		test.log(LogStatus.PASS, "pwcmint Homepage");
 		/*User can see a section containing quick links to frequently used pages within Products and Resources sections */
 		driver.findElement(By.linkText("Home")).isDisplayed();
@@ -176,11 +176,11 @@ public class Sprint208 {
 	    
 	    
 		@Test(priority=2)		
-		public void HomePage(){
+		public void Homepage(){
 			driver.get(config.baseurl);
 			driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
 			test=extent.startTest("Global Header-Home Page-US49292");
-			test.assignCategory("Sprint208");
+			test.assignCategory("HomePage");
 			test.log(LogStatus.PASS, "pwcmint Homepage");
 			
 			/*User is able to land on a home page*/
@@ -219,7 +219,7 @@ public class Sprint208 {
 			driver.get(config.baseurl);
 			driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
 			test=extent.startTest("Global Header-Navigation Bar-US49294");
-			test.assignCategory("Sprint208");
+			test.assignCategory("HomePage");
 			test.log(LogStatus.PASS, "pwcmint Homepage");
 			
 			/* User can see Navigation tabs-Home, Products and Solutions, Resources*/

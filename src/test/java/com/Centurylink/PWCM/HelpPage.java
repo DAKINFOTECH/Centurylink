@@ -13,6 +13,8 @@ import java.util.Iterator;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
+import junit.framework.Assert;
+
 import com.Centurylink.PWCM.pwcmlibrary;
 import com.relevantcodes.extentreports.ExtentReports;
 import com.relevantcodes.extentreports.ExtentTest;
@@ -23,12 +25,13 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
-public class Sprint209 {
+public class HelpPage {
 
 	ExtentReports extent;
 	ExtentTest test;
 	WebDriver driver;
 	pwcmlibrary config=new pwcmlibrary();
+	String helptext="Help";
 	
 	@BeforeClass
 	   @Parameters("browser")
@@ -37,14 +40,14 @@ public class Sprint209 {
 		driver=BrowserClass.browserSelection(browserName);
 	   }
 		
-	@Test(priority=0,dataProvider="Helppage")
-	public void Helppage(String usrname, String usrid, String acompany, String pcompany, String pnumber, String cnumber,
+	@Test(priority=0,dataProvider="Help")
+	public void Help(String usrname, String usrid, String acompany, String pcompany, String pnumber, String cnumber,
 			             String mailid, String browser, String bversion, String obname, String pcategory, String ptype,
 			             String pdescription, String errormsg, String stepstaken) throws InterruptedException
 	{
 		extent=new ExtentReports(config.reportpath,false);
 		test=extent.startTest("Help Page-US49300");
-		test.assignCategory("Sprint209");
+		test.assignCategory("Helppage");
 		driver.manage().window().maximize();
 		driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
 		driver.get(config.baseurl);
@@ -70,8 +73,8 @@ public class Sprint209 {
 				driver.manage().window().maximize();
 				driver.manage().timeouts().implicitlyWait(7, TimeUnit.SECONDS);
 				
-				driver.findElement(By.className("positive")).isDisplayed();
-				driver.findElement(By.className("negative")).isDisplayed();
+				/*Check you are in help page*/
+				Assert.assertEquals(helptext, driver.findElement(By.xpath("//p[@class='askATechHeader']")).getText());
 				test.log(LogStatus.PASS, "Helppage opened in new window");
 				
 				/*Fill the help page form */
@@ -83,18 +86,18 @@ public class Sprint209 {
 				driver.findElement(By.id("CELL_NUMBER")).sendKeys(cnumber);
 				driver.findElement(By.id("E_MAIL")).sendKeys(mailid);
 				Select ibrowser=new Select(driver.findElement(By.id("internetbrowser")));
-				ibrowser.selectByValue(browser);
+				ibrowser.selectByValue("other");
 				driver.findElement(By.id("BROWSER_VERSION")).sendKeys(bversion);
 				driver.findElement(By.id("OTHER_BROWSER_NAME")).sendKeys(obname);
 				Select probtype=new Select(driver.findElement(By.id("PROBLEM_CATEGORY")));
-				probtype.selectByVisibleText(pcategory);
+				probtype.selectByValue("Other");
 				driver.findElement(By.id("OTHER_PROBLEM_TYPE")).sendKeys(ptype);
 				driver.findElement(By.id("DET_DESC_PROBLEM")).sendKeys(pdescription);
 				driver.findElement(By.id("ERROR_MSG")).sendKeys(errormsg);
 				driver.findElement(By.xpath("(//input[@name='PROBLEM_REPRODUCIBLE'])[1]")).click();
 				driver.findElement(By.id("STEPS_TAKEN")).sendKeys(stepstaken);
 				test.log(LogStatus.PASS, "Able to fill all the fields in helpage");
-				Thread.sleep(2000);
+				Thread.sleep(4000);
 				/*Check reset functionality*/
 				driver.findElement(By.className("negative")).click();
 				driver.findElement(By.xpath("(//input[@name='PROBLEM_REPRODUCIBLE'])[2]")).isEnabled();
@@ -116,10 +119,8 @@ public class Sprint209 {
 				Select ibrowser1=new Select(driver.findElement(By.id("internetbrowser")));
 				ibrowser1.selectByValue(browser);
 				driver.findElement(By.id("BROWSER_VERSION")).sendKeys(bversion);
-				driver.findElement(By.id("OTHER_BROWSER_NAME")).sendKeys(obname);
 				Select probtype1=new Select(driver.findElement(By.id("PROBLEM_CATEGORY")));
-				probtype1.selectByVisibleText(pcategory);
-				driver.findElement(By.id("OTHER_PROBLEM_TYPE")).sendKeys(ptype);
+				probtype1.selectByValue(pcategory);
 				driver.findElement(By.id("DET_DESC_PROBLEM")).sendKeys(pdescription);
 				driver.findElement(By.id("ERROR_MSG")).sendKeys(errormsg);
 				driver.findElement(By.id("PROBLEM_REPRODUCIBLE")).click();
@@ -131,7 +132,7 @@ public class Sprint209 {
 				driver.findElement(By.className("positive")).click();
 				driver.findElement(By.id("E_MAIL")).isDisplayed();
 				driver.findElement(By.id("E_MAIL")).sendKeys(mailid);
-				test.log(LogStatus.PASS, "Email and Mandatory is working");
+				test.log(LogStatus.PASS, "Help page (*)Mandatory is working");
 				
 				/*Submit Not functional*/
 			    test.log(LogStatus.INFO, "Submit non functional:Negative Testing scripts will be created after submit is functional");
@@ -147,98 +148,10 @@ public class Sprint209 {
 		extent.flush();
 		}
 	
-	@Test(priority=1,dataProvider="Feedbackpage")
-	public void Feedbackpage( String uname, String uid, String partcompany, String mailid, String cellnum, String offnum,
-			                  String subjects, String details, String comment) throws InterruptedException
-	{
-		    extent=new ExtentReports(config.reportpath,false);
-		    test=extent.startTest("Feedback Page-US49301");
-		    test.assignCategory("Sprint209");
-		    driver.get(config.baseurl);
-		    String parentw=driver.getWindowHandle();
-		    test.log(LogStatus.PASS, "pwcmint Homepage");
-		    
-		    /*Switch to child Feedback Page*/
-			driver.findElement(By.linkText("Feedback")).click();
-			Set<String> feedbacks=driver.getWindowHandles();
-			Iterator<String> feedbacki=feedbacks.iterator();
-			while(feedbacki.hasNext()){
-				String childw=feedbacki.next();
-				if(!parentw.equalsIgnoreCase(childw))
-				{
-					driver.switchTo().window(childw);
-					driver.manage().window().maximize();
-					driver.manage().timeouts().implicitlyWait(7, TimeUnit.SECONDS);
-					test.log(LogStatus.PASS, "Feedback page opened in new window");
-					
-					/*Fill the feedback page form*/
-					driver.findElement(By.className("positive")).isDisplayed();
-					driver.findElement(By.className("negative")).isDisplayed();
-				    driver.findElement(By.id("name")).sendKeys(uname);
-					driver.findElement(By.id("userid")).sendKeys(uid);
-					driver.findElement(By.id("partnername")).sendKeys(partcompany);
-					driver.findElement(By.id("email")).sendKeys(mailid);
-					driver.manage().timeouts().implicitlyWait(4, TimeUnit.SECONDS);
-					driver.findElement(By.id("cellno")).sendKeys(cellnum);
-					driver.manage().timeouts().implicitlyWait(4, TimeUnit.SECONDS);
-					driver.findElement(By.id("ofcnumber")).sendKeys(offnum);
-					Select subj=new Select(driver.findElement(By.name("subject")));
-					subj.selectByValue(subjects);
-					driver.findElement(By.name("details")).sendKeys(details);
-					driver.findElement(By.name("comments")).sendKeys(comment);
-					test.log(LogStatus.PASS, "Able to fill all the fields in the page");
-					Thread.sleep(2000);
-					
-					/*Check the reset functionality*/
-					driver.findElement(By.className("negative")).click();
-					WebElement inputBox = driver.findElement(By.id("userid"));
-					String textInsideInputBox = inputBox.getAttribute("value");
-					if(textInsideInputBox.isEmpty())
-					{
-					  test.log(LogStatus.PASS, "Reset Working");
-					}else {
-						test.log(LogStatus.FAIL, "Reset Not Working");
-						  }
-					
-					/*Submit negative testing*/
-					driver.findElement(By.id("name")).sendKeys(uname);
-					driver.findElement(By.id("userid")).sendKeys(uid);
-					driver.manage().timeouts().implicitlyWait(4, TimeUnit.SECONDS);
-					driver.findElement(By.id("cellno")).sendKeys(cellnum);
-					driver.manage().timeouts().implicitlyWait(4, TimeUnit.SECONDS);
-					driver.findElement(By.id("ofcnumber")).sendKeys(offnum);
-					Select subj1=new Select(driver.findElement(By.name("subject")));
-					subj1.selectByValue(subjects);
-					driver.findElement(By.name("details")).sendKeys(details);
-					driver.findElement(By.name("comments")).sendKeys(comment);
-					
-					driver.findElement(By.className("positive")).click();
-					driver.findElement(By.id("email")).isDisplayed();
-					driver.findElement(By.id("partnername")).isDisplayed();
-					test.log(LogStatus.PASS, "Mandatory is working");
-					driver.findElement(By.id("partnername")).sendKeys(partcompany);
-					driver.findElement(By.id("email")).sendKeys("ilamukil.arunkumargmail.com");
-					driver.findElement(By.className("positive")).click();
-					driver.findElement(By.id("email")).isDisplayed();
-					driver.findElement(By.id("email")).sendKeys(mailid);
-					
-					/*Submit Not functional*/
-				    test.log(LogStatus.INFO, "Submit non functional:Negative Testing scripts will be created after submit is functional");
-				    test.log(LogStatus.INFO, "For Expected Result 5,6,7and 8, scripts will be created after submit functional");
-					
-					Thread.sleep(2000);
-					
-					driver.close();
-					}
-				}
-			driver.switchTo().window(parentw);
-			test.log(LogStatus.PASS, "Feedback Page Test Passed");
-			extent.endTest(test);
-			extent.flush();
-	}
+	
 	
 	//Data provider for Help Page.
-	@DataProvider(name="Helppage")
+	@DataProvider(name="Help")
 	public Object[][] passData(){
 	config.Excelpath(config.injectpath,0);
 	int row=config.Excelcount();
@@ -254,25 +167,6 @@ public class Sprint209 {
 
 	return Helppagedata;
 	}
-	
-	//Data provider for Feedback Page.
-	@DataProvider(name="Feedbackpage")
-	public Object[][] passData1(){
-	config.Excelpath(config.injectpath,1);
-	int row=config.Excelcount();
-	int rows=row-1;
-	Object[][] Feedbackdata=new Object[rows][9];
-	for(int i=1;i<row;i++)
-	{
-		  for(int j=0;j<9;j++){
-			int k=i-1;  
-			Feedbackdata[k][j]=config.Exceldata(i, j);
-	 	  }
-	}
-
-	return Feedbackdata;
-	}
-	
 	
 	@AfterMethod
 	public void tearDown(ITestResult result) throws InterruptedException{

@@ -3,11 +3,11 @@
 <suite name="Failed suite [Default suite]">
   <test name="Default test(failed)">
     <classes>
-      <class name="com.Centurylink.PWCM.dummytest">
+      <class name="com.Centurylink.PWCM.Helppage">
         <methods>
-          <include name="test1"/>
+          <include name="Help"/>
         </methods>
-      </class> <!-- com.Centurylink.PWCM.dummytest -->
+      </class> <!-- com.Centurylink.PWCM.Helppage -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

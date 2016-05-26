@@ -24,6 +24,9 @@ public class pwcmlibrary {
 	public String password="admin";
 	public String baseurl="http://172.26.130.130:4502/content/pwcm-first-page/home.html";
 	public String toolsurl="http://172.26.130.130:4502/content/pwcm-first-page/test-page.html";
+	public String produsername="AWQI";
+	public String prodpassword="Partner2015";
+	
 	
 	//Login function
 	public void login(WebDriver driver)
@@ -33,6 +36,16 @@ public class pwcmlibrary {
 		driver.findElement(By.id("submit-button")).click();
 		return;
 	}
+	
+	//Production Login
+	public void prodlogin(WebDriver driver)
+	{
+		driver.findElement(By.name("logon")).sendKeys(produsername);
+		driver.findElement(By.name("password")).sendKeys(prodpassword);
+		driver.findElement(By.xpath("//input[@type='image']")).click();
+		return;
+	}
+	
 	
 	    //locate the Excel file
 		public void Excelpath(String path, int sheetnum)

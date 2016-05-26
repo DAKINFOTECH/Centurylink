@@ -1,27 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Failed suite [SuitePWCM]">
-  <parameter name="browser" value="ie"/>
-  <test name="IETest(failed)">
-    <parameter name="browser" value="ie"/>
+  <parameter name="browser" value="firefox"/>
+  <test name="FirefoxTest(failed)">
+    <parameter name="browser" value="firefox"/>
     <classes>
-      <class name="com.Centurylink.PWCM.Sprint209">
+      <class name="com.Centurylink.PWCM.HelpPage">
         <methods>
-          <include name="tearDown"/>
           <include name="closebrowser"/>
+          <include name="tearDown"/>
+          <include name="drivercall"/>
+        </methods>
+      </class> <!-- com.Centurylink.PWCM.HelpPage -->
+      <class name="com.Centurylink.PWCM.FeedbackPage">
+        <methods>
           <include name="Feedbackpage" invocation-numbers="0"/>
-          <include name="drivercall"/>
-        </methods>
-      </class> <!-- com.Centurylink.PWCM.Sprint209 -->
-      <class name="com.Centurylink.PWCM.Sprint208">
-        <methods>
-          <include name="drivercall"/>
           <include name="tearDown"/>
           <include name="closebrowser"/>
-          <include name="NavigationBar"/>
-          <include name="UtilityLinks"/>
+          <include name="drivercall"/>
         </methods>
-      </class> <!-- com.Centurylink.PWCM.Sprint208 -->
+      </class> <!-- com.Centurylink.PWCM.FeedbackPage -->
     </classes>
-  </test> <!-- IETest(failed) -->
+  </test> <!-- FirefoxTest(failed) -->
 </suite> <!-- Failed suite [SuitePWCM] -->
