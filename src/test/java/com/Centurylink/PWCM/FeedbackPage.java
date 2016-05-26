@@ -37,7 +37,7 @@ public class FeedbackPage {
 		driver=BrowserClass.browserSelection(browserName);
 	   }
 	
-	@Test(priority=1,dataProvider="Feedbackpage")
+	@Test(priority=0,dataProvider="Feedbackpage")
 	public void Feedbackpage( String uname, String uid, String partcompany, String mailid, String cellnum, String offnum,
 			                  String subjects, String details, String comment) throws InterruptedException
 	{
