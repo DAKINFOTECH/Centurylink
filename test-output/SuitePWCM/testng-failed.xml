@@ -5,21 +5,12 @@
   <test name="FirefoxTest(failed)">
     <parameter name="browser" value="firefox"/>
     <classes>
-      <class name="com.Centurylink.PWCM.HelpPage">
+      <class name="com.Centurylink.PWCM.PartnerTools">
         <methods>
-          <include name="closebrowser"/>
-          <include name="tearDown"/>
+          <include name="CNDCpage"/>
           <include name="drivercall"/>
         </methods>
-      </class> <!-- com.Centurylink.PWCM.HelpPage -->
-      <class name="com.Centurylink.PWCM.FeedbackPage">
-        <methods>
-          <include name="Feedbackpage" invocation-numbers="0"/>
-          <include name="tearDown"/>
-          <include name="closebrowser"/>
-          <include name="drivercall"/>
-        </methods>
-      </class> <!-- com.Centurylink.PWCM.FeedbackPage -->
+      </class> <!-- com.Centurylink.PWCM.PartnerTools -->
     </classes>
   </test> <!-- FirefoxTest(failed) -->
 </suite> <!-- Failed suite [SuitePWCM] -->

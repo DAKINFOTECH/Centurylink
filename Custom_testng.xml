@@ -5,8 +5,7 @@
   <test name="FirefoxTest">
   <parameter name="browser" value="firefox"/>
   <classes>
-   <class name="com.Centurylink.PWCM.HelpPage"/>
-      <class name="com.Centurylink.PWCM.FeedbackPage"/>
+   <class name="com.Centurylink.PWCM.PartnerTools"/>
   </classes>
   </test>
 

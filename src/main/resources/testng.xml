@@ -8,6 +8,7 @@
   <class name="com.Centurylink.PWCM.HomePage"/>
   <class name="com.Centurylink.PWCM.HelpPage"/>
   <class name="com.Centurylink.PWCM.FeedbackPage"/>
+  <class name="com.Centurylink.PWCM.PartnerTools"/>
   </classes>
   </test>
 
@@ -18,6 +19,7 @@
   <class name="com.Centurylink.PWCM.HomePage"/>
   <class name="com.Centurylink.PWCM.HelpPage"/>
   <class name="com.Centurylink.PWCM.FeedbackPage"/>
+  <class name="com.Centurylink.PWCM.PartnerTools"/>
   </classes>
   </test>
 
@@ -27,6 +29,7 @@
   <class name="com.Centurylink.PWCM.HomePage"/>
   <class name="com.Centurylink.PWCM.HelpPage"/>
   <class name="com.Centurylink.PWCM.FeedbackPage"/>
+  <class name="com.Centurylink.PWCM.PartnerTools"/>
   </classes>
   </test>
  -->
