@@ -8,6 +8,8 @@ import junit.framework.Assert;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.testng.ITestResult;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
@@ -34,7 +36,7 @@ public class PartnerTools {
 	@Test(priority=0)
 	public void AQCBPage()
 	{
-		extent=new ExtentReports(config.reportpath,true);
+		extent=new ExtentReports(config.reportpath,false);
 	    test=extent.startTest("AQCB page-US55844");
 	    test.assignCategory("PartnerTools");
 	    driver.get(config.toolsurl);
@@ -155,5 +157,91 @@ public class PartnerTools {
 		extent.flush();
 		}
 	
+	@Test(priority=2)
+	public void VQT() throws InterruptedException
+	{
+		extent=new ExtentReports(config.reportpath,false);
+		test=extent.startTest("VQT - VoIP Qualification Tool - US55862");
+		test.assignCategory("PartnerTools");
+		driver.manage().window().maximize();
+		driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
+		driver.get(config.toolsurl);
+		test.log(LogStatus.PASS, " AEM Homepage Lauched");
+		driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+		driver.findElement(By.id("submit-button")).isDisplayed();
+		
+		/*PWCMINT login*/
+		config.login(driver);
+		driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+		test.log(LogStatus.PASS, "AEM Login Success");
+		
+		//Link to the tool can be inserted into a test content page
+		  driver.findElement(By.linkText("VQT-VoIP Qualification Tool")).isDisplayed();
+		  test.log(LogStatus.PASS, "VQT Link is present");
+		  
+		  //User clicks the link and is taken directly to the VQT page without additional login (SSO)
+		  String parentw=driver.getWindowHandle();
+		  driver.findElement(By.linkText("VQT-VoIP Qualification Tool")).click();
+		  driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
+			
+			Set<String> channels=driver.getWindowHandles();
+			  Iterator<String> channeli=channels.iterator();
+			  while(channeli.hasNext()){
+			  String childw=channeli.next();
+			  if(!parentw.equalsIgnoreCase(childw))
+			  {
+			  driver.switchTo().window(childw);
+			  config.prodlogin(driver);
+			  driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+			  driver.findElement(By.id("welcomeUser")).isDisplayed();
+			  test.log(LogStatus.PASS, "Channel Alliance Log in Successful");
+			  driver.close();			 
+			  
+			   }
+		       }
+			  driver.switchTo().window(parentw);
+			  driver.findElement(By.linkText("VQT-VoIP Qualification Tool")).click();
+			  driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);	
+			  
+			  Set<String> vqts=driver.getWindowHandles();
+			  Iterator<String> vqti=vqts.iterator();
+				  while(vqti.hasNext()){
+				  String childw=vqti.next();
+				  if(!parentw.equalsIgnoreCase(childw))
+				  {
+				  driver.switchTo().window(childw);
+				  test.log(LogStatus.PASS, "VQT page is opened");
+				  
+		  //User is presented with the tool page with  fields to be completed
+				  driver.findElement(By.partialLinkText("Service Availability and TN Portability Check")).isDisplayed();
+				  driver.findElement(By.partialLinkText("Hosted VoIP MCC Check")).isDisplayed();
+				  driver.findElement(By.partialLinkText("Legacy Managed VoIP MCC Check")).isDisplayed();
+				  driver.findElement(By.partialLinkText("Integrated Access MCC Check")).isDisplayed();
+				  test.log(LogStatus.PASS, "VQT Tool page with the associated links are present");
+				  
+		  //No other functionality on our part.  Just get the user to the tool.
+				  driver.close();
+			   
+			   }
+		       }
+		driver.switchTo().window(parentw);
+		driver.close();
+		test.log(LogStatus.PASS, "CNDC Test Passed");
+		extent.endTest(test);
+		extent.flush();
+		}
+	
+	@AfterMethod
+	public void tearDown(ITestResult result) throws InterruptedException{
+	if(ITestResult.FAILURE==result.getStatus())
+	{
+	config.captureScreenshot(driver,result.getName());
+	String image=test.addScreenCapture(config.Attachpath+"\\Screenshots\\"+result.getName()+".jpg");
+	test.log(LogStatus.FAIL, result.getName(), image);
+	Thread.sleep(5000);
+	}
+	extent.endTest(test);
+	extent.flush();
+	}
 
 }
